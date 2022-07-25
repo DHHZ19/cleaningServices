@@ -47,7 +47,6 @@ app.delete("/deleteTestimonal", async (req, res) => {
     res.status(501);
   }
 });
-const PORT = 3000;
 app.listen(process.env.PORT || PORT, {}, () => {
   console.log(`connected to 3000`);
 });
