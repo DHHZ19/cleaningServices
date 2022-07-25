@@ -9,9 +9,7 @@ app.use(express.static("public"));
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-mongoose.connect(process.env.DB_STRING, {}, () => {
-  console.log("conntectd to db");
-});
+mongoose.connect(process.env.DB_STRING);
 
 app.get("/", async (req, res) => {
   try {
