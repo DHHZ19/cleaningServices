@@ -2962,20 +2962,6 @@ ul.faces li {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
 }
-
-.logo:before {
-  background: #72bee1;
-  border-radius: 4px;
-  color: #ffffff;
-  content: "\f0e7"; /* look for a way to change the content of the image */
-  display: inline-block;
-  font-size: 3em;
-  height: 1.65em;
-  line-height: 1.65em;
-  text-align: center;
-  width: 1.65em;
-}
-
 @media screen and (max-width: 1280px) {
   .logo:before {
     font-size: 2.5em;
