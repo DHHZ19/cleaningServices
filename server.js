@@ -9,15 +9,18 @@ app.use(express.static("public"));
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-mongoose.connect(process.env.DB_STRING);
+const cookieParser = require("cookie-parser");
+let cookie = require("cookie");
+const e = require("express");
+
+app.use(cookieParser());
+mongoose.connect(process.env.DB_STRING, {}, () => {
+  console.log("conntectd to db");
+});
 
 app.get("/", async (req, res) => {
-  try {
-    const quoters = await Quoter.find({});
-    res.render("index", { quoters });
-  } catch (error) {
-    console.error(error);
-  }
+  const quoters = await Quoter.find({});
+  res.render("index", { quoters });
 });
 app.post("/testimonals", async (req, res) => {
   try {
@@ -37,15 +40,10 @@ app.post("/testimonals", async (req, res) => {
 });
 
 app.delete("/deleteTestimonal", async (req, res) => {
-  try {
-    const deleted = await Quoter.findOneAndDelete({ name: req.body.name });
-    res.status(201).redirect("/");
-  } catch (error) {
-    console.error(error);
-    res.status(501);
-  }
+  const deleted = await Quoter.findOneAndDelete({ name: req.body.name });
+  res.redirect("/");
 });
-const PORT = 4000;
+const PORT = 3000;
 app.listen(process.env.PORT || PORT, {}, () => {
-  console.log(`connected to ${PORT}`);
+  console.log(`connected to 3000`);
 });
