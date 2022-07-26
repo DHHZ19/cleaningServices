@@ -12,7 +12,10 @@
   },
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node ./server.js"
+  },
+  "engines": {
+    "node": "18.x"
   },
   "name": "landj",
   "version": "1.0.0",
