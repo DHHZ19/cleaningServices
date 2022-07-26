@@ -14,9 +14,13 @@ let cookie = require("cookie");
 const e = require("express");
 
 app.use(cookieParser());
-mongoose.connect(process.env.DB_STRING, {}, () => {
-  console.log("conntectd to db");
-});
+mongoose.connect(
+  process.env.DB_STRING,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("conntectd to db");
+  }
+);
 
 app.get("/", async (req, res) => {
   const quoters = await Quoter.find({});
