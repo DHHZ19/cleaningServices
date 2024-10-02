@@ -179,39 +179,6 @@
           />
         </div>
       </section>
-
-      <!-- Five -->
-      <section id="five" class="wrapper special">
-        <h2>You don’t have to take our word for it</h2>
-        <p>People love our work see here why!</p>
-        <ul class="faces">
-          <% for(let i=0; i < quoters.length; i++) { %>
-          <li>
-            <p>"<%= quoters[i].testimonal%>"</p>
-            <h3><%= quoters[i].name %></h3>
-            <% if (locals.qutoeId && locals.name == quoters[i].name) {%>
-            <span class="del"> Delete Me </span> <% } %>
-          </li>
-          <%} %>
-        </ul>
-        <h2>Add your Testimonal</h2>
-        <p>Tell us how we did</p>
-        <section class="form">
-          <form action="/testimonals" method="POST">
-            <label for="name">Name:</label>
-            <input
-              type="text"
-              placeholder="name"
-              name="name"
-              id="name"
-              required
-            />
-            <label for="testimonal">Testimonal:</label>
-            <input type="text" name="testimonal" placeholder="testimonal" />
-            <input id="submit" type="submit" />
-          </form>
-        </section>
-      </section>
     </div>
 
     <!-- Footer -->
