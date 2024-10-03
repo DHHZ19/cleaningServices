@@ -1,7 +1,7 @@
 # L & J's Cleaning services
 This is a project to showcase the awesome work of my client.
 
-**Link to project:** https://dhhz19.github.io/cleaningServicesProj/L&JcleaningServices/
+**Link to project:** [https://dhhz19.github.io/cleaningServicesProj/L&JcleaningServices/](https://dhhz19.github.io/cleaningServices/views/index.html)
 
 ## How It's Made:
 
