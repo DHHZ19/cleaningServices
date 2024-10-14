@@ -103,8 +103,10 @@ section {
   display: block;
 }
 
-.img {
-  width: 100%;
+@media screen and (max-width: 450px) {
+  .img {
+    width: 100%;
+  }
 }
 
 body {
