@@ -89,6 +89,22 @@ video {
   vertical-align: baseline;
 }
 
+
+.pageclip-form__success{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(204, 204, 204, 0.5);
+    width: 50%;
+    height: 50%;
+    opacity: 50%;
+}
+
+
 article,
 aside,
 details,
