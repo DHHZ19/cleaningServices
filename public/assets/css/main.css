@@ -89,6 +89,21 @@ video {
   vertical-align: baseline;
 }
 
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+
 .pageclip-form__success div {
   position: absolute;
   top: -1px;
@@ -101,6 +116,9 @@ video {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  /* Animation to fade out after 5 seconds */
+  animation: fadeOut 5s forwards;
 }
 
 fieldset {
