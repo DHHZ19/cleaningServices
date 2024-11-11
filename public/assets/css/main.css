@@ -1996,12 +1996,16 @@ hr {
   border-color: #e3e3e3;
 }
 
-/* Button */
+.pageclip-form__submit {
+  font-size: 12pt;
+}
 
+/* Button */
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
 button,
+.pageclip-form__submit,
 .button {
   -moz-appearance: none;
   -webkit-appearance: none;
