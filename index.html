@@ -213,8 +213,8 @@
               type="text"
               name="name"
               id="name"
-              value=""
               placeholder="Jon Doe"
+              required
             />
           </div>
           <div class="col-6 col-12-xsmall">
@@ -223,8 +223,8 @@
               type="email"
               name="email"
               id="email"
-              value=""
               placeholder="example@email.com"
+              required
             />
           </div>
           <!-- Break -->
@@ -239,30 +239,32 @@
             </select>
           </div>
           <!-- Break -->
-          <div class="col-4 col-12-small">
-            <input
-              value="Full house cleaning"
-              type="radio"
-              id="priority-low"
-              name="type"
-              checked=""
-            />
-            <label for="priority-low">Full house cleaning</label>
-          </div>
-          <div class="col-4 col-12-small">
-            <input
-              value="Parts of house cleaning"
-              type="radio"
-              id="priority-normal"
-              name="type"
-            />
-            <label for="priority-normal">Parts of house cleaning</label>
-          </div>
+          <fieldset class="col-6 col-12-xsmall">
+            <legend for="full">What are we cleaning?</legend>
+            <div>
+              <input
+                type="radio"
+                id="Residential"
+                name="drone"
+                value="Full house cleaning"
+                checked
+              />
+              <label for="Residential">Residential</label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="commerical"
+                name="drone"
+                value="commerical"
+              />
+              <label for="commerical">Commerical</label>
+            </div>
+          </fieldset>
           <!-- Break -->
-          <div class="col-5 col-12-xsmall">
-            <label for="city"
-              >Where are we cleaning? Select a city in Minnesota</label
-            >
+          <div class="col-6 col-12-xsmall">
+            <label for="city">Where are we cleaning?</label>
             <input id="city" name="city" type="text" placeholder="city" />
           </div>
           <!-- Break -->
