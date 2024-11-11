@@ -89,7 +89,7 @@ video {
   vertical-align: baseline;
 }
 
-.pageclip-form__success {
+.pageclip-form__success div {
   position: absolute;
   top: -1px;
   left: -1px;
