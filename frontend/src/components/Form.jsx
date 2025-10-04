@@ -1,6 +1,92 @@
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
+import React from "react";
+import { useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { z } from "zod";
+import { MINNEAPOLIS_METRO_CITIES } from "../data/metro-cities";
+import Button from "./Button";
 
+const allowedIds = MINNEAPOLIS_METRO_CITIES.map((c) => c.id);
+const schema = z.object({
+  cityId: z
+    .string()
+    .min(1, "Select a city")
+    .refine((val) => allowedIds.includes(val), "Invalid city selected"),
+});
+
+async function submitForm(prevState, formData) {
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+  // Create a copy of the previous state as a starting point
+  const result = { ...prevState };
+
+  const city = formData.get("city");
+  const email = formData.get("email");
+
+  // Track if we have any validation errors
+  let hasErrors = false;
+
+  // Validate city
+  if (!city || schema.safeParse({ cityId: city }).success === false) {
+    result.city = {
+      ...prevState.city,
+      success: false,
+      message: "Please select a valid city.",
+    };
+    hasErrors = true;
+  } else {
+    // Reset any previous city errors if now valid
+    result.city = {
+      success: true,
+      message: "",
+    };
+  }
+
+  // Validate email
+  if (!email || !email.includes("@")) {
+    result.email = {
+      ...prevState.email,
+      success: false,
+      message: "Please enter a valid email address.",
+    };
+    hasErrors = true;
+  } else {
+    // Reset any previous email errors if now valid
+    result.email = {
+      success: true,
+      message: "",
+    };
+  }
+
+  // Set overall form status based on validation results
+  if (hasErrors) {
+    result.success = false;
+    result.message = "Please fix the highlighted fields to continue.";
+  } else {
+    result.success = true;
+    result.message = "Form submitted successfully!";
+  }
+
+  return result;
+}
 export default function Form() {
+  const [state, formAction] = useActionState(submitForm, {
+    success: null,
+    message: "",
+    city: {
+      success: null,
+      message: "",
+    },
+    email: { success: null, message: "" },
+  });
+
+  const sorted = React.useMemo(
+    () =>
+      [...MINNEAPOLIS_METRO_CITIES].sort((a, b) =>
+        a.name.localeCompare(b.name)
+      ),
+    []
+  );
+
   return (
     <div
       className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8"
@@ -14,11 +100,7 @@ export default function Form() {
           We will get back to you in 24hrs
         </p>
       </div>
-      <form
-        action="#"
-        method="POST"
-        className="mx-auto mt-16 max-w-xl sm:mt-20"
-      >
+      <form action={formAction} className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label
@@ -56,23 +138,6 @@ export default function Form() {
           </div>
           <div className="sm:col-span-2">
             <label
-              htmlFor="company"
-              className="block text-sm/6 font-semibold text-gray-900"
-            >
-              Company
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="company"
-                name="company"
-                type="text"
-                autoComplete="organization"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-2">
-            <label
               htmlFor="email"
               className="block text-sm/6 font-semibold text-gray-900"
             >
@@ -84,8 +149,19 @@ export default function Form() {
                 name="email"
                 type="email"
                 autoComplete="email"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                className={`block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 ${
+                  state.email.success ? "" : "outline-red-600"
+                }`}
               />
+              {state.email.message && (
+                <p
+                  className={`form-message ${
+                    state.email.success ? "text-green-600" : "text-red-600"
+                  }`}
+                >
+                  {state.email.message}
+                </p>
+              )}
             </div>
           </div>
           <div className="sm:col-span-2">
@@ -123,6 +199,42 @@ export default function Form() {
                 />
               </div>
             </div>
+          </div>
+          <div className="sm:col-span-2">
+            <label
+              htmlFor="city"
+              className="block text-sm/6 font-semibold text-gray-900"
+            >
+              City (Twin Cities metro)
+            </label>
+            <select
+              id="city"
+              name="city"
+              autoComplete="city"
+              aria-label="City"
+              defaultValue=""
+              className={`block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 ${
+                state.email.success ? "" : "outline-red-600"
+              }`}
+            >
+              <option value="" disabled>
+                Select a city
+              </option>
+              {sorted.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name}, {c.state}
+                </option>
+              ))}
+            </select>
+            {state.city.message && (
+              <p
+                className={`form-message ${
+                  state.city.success ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {state.city.message}
+              </p>
+            )}
           </div>
           <div className="sm:col-span-2">
             <label
@@ -170,12 +282,16 @@ export default function Form() {
           </div>
         </div>
         <div className="mt-10">
-          <button
-            type="submit"
-            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Submit
-          </button>
+          <Button />
+          {state.message && (
+            <p
+              className={`form-message ${
+                state.success ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {state.message}
+            </p>
+          )}
         </div>
       </form>
     </div>
