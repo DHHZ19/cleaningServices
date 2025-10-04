@@ -1,12 +1,5 @@
 const navigation = {
-  main: [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Jobs", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Accessibility", href: "#" },
-    { name: "Partners", href: "#" },
-  ],
+  main: [{ name: "Contact Us", href: "#contact-us" }],
   social: [
     {
       name: "Facebook",
@@ -103,7 +96,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="mt-10 text-center text-sm/6 text-gray-600">
-          &copy; 2024 Your Company, Inc. All rights reserved.
+          &copy; 2024 L & J's Cleaning, Inc. All rights reserved.
         </p>
       </div>
     </footer>

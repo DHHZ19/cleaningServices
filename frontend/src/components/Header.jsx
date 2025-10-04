@@ -6,12 +6,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import momsMainLogo from "../assets/momsMainLogo.svg";
 import fav from "../../public/favicon_io/favicon-32x32.png";
 
-const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
-];
+const navigation = [{ name: "Contact Us", href: "#contact-us" }];
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
