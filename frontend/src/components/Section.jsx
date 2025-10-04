@@ -13,25 +13,25 @@ const features = [
   {
     name: "Deep Cleanings",
     description:
-      "Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.",
+      "Restore that just‑moved‑in feel with a meticulous, room‑by‑room scrub: baseboards, vents, grout, inside cabinets, and more. Perfect for spring cleaning, move‑ins/move‑outs, or before guests arrive.",
     icon: houseKeeping,
   },
   {
     name: "Quality Cleaning Guaranteed",
     description:
-      "Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.",
+      "Your satisfaction is our priority—if you’re not thrilled, we’ll make it right with a free re‑clean within 24 hours. Fully insured, background‑checked pros using kid‑ and pet‑safe, eco‑friendly products.",
     icon: badge,
   },
   {
     name: "Fair Pricing",
     description:
-      "Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.",
+      "Simple, transparent rates with no surprise fees. Choose flat‑rate packages or hourly service—get an instant quote based on home size and priorities",
     icon: pricing,
   },
   {
     name: "Scheduled Cleanings",
     description:
-      "Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.",
+      "Book once and relax with weekly, bi‑weekly, or monthly service. Automated reminders, easy rescheduling, and the same trusted team whenever possible.",
     icon: scheduled,
   },
 ];
