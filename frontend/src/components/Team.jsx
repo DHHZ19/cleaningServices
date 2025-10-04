@@ -19,7 +19,7 @@ export default function Team() {
             People You can trust
           </h2>
           <p className="mt-6 text-lg/8 text-gray-600">
-            For 15 years of service, we have dedicated ourselves to professional
+            For 20 years of service, we have dedicated ourselves to professional
             and honest work. Over the years, we have built lasting relationships
             with clients who trust us to meet their cleaning needs. We look
             forward to the opportunity to serve you soon!

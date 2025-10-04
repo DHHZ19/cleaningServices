@@ -1,7 +1,7 @@
 const stats = [
-  { label: "Transactions every 24 hours", value: "44 million" },
-  { label: "Assets under holding", value: "$119 trillion" },
-  { label: "New users annually", value: "46,000" },
+  { label: "Transactions every 24 hours", value: "Deep Cleanings" },
+  { label: "Assets under holding", value: "Scheduled Cleanings" },
+  { label: "New users annually", value: "Fair Pricing" },
 ];
 
 export default function Stats() {
@@ -15,7 +15,7 @@ export default function Stats() {
           <div className="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
             <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
               <p className="text-xl/8 text-gray-600">
-                For more than 15 years, L & J’s Cleaning Services delivers
+                For more than 20 years, L & J’s Cleaning Services delivers
                 cleaning services to residential and commerical businesses of
                 the Twin Cities metro area. Offering a variety of services all
                 catered to the need of our valued clients. We offer customizable
