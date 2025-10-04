@@ -4,8 +4,3 @@
 html {
   scroll-behavior: smooth;
 }
-
-/* Offset for fixed header if needed */
-#contact-us {
-  scroll-margin-top: 100px;
-}
